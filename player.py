@@ -118,7 +118,7 @@ class Player(pygame.sprite.Sprite):
                 self.rect.x += block.change_x
 
     def calc_grav(self):
-        """ Calculate effect of gravity. """
+        #The code in here will calculate the effect of gravity.
         if self.change_y == 0:
             self.change_y = 1
         else:
