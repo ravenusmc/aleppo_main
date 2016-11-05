@@ -1,6 +1,9 @@
 ################################################
 # This game was made by Mike Cuddy, Oct/Nov of 2016
 #
+#
+# Enough cannot be said from the tutorials from paul craven at program arcade games. His site link is below.
+# It is from that site that I was able to get code to build this game
 # There was plenty of support from http://programarcadegames.com/python_examples/f.php?file=move_sprite_keyboard_smooth.py
 # as well as from sentdex and his YouTube vidoes-both on his site and the New Boston.
 # Those videos may be found at https://www.youtube.com/watch?v=Vom-Tuo0rcU&list=PLQVvvaa0QuDdLkP8MrOXLe_rKuf6r80KO&index=7
