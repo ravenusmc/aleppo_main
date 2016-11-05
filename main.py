@@ -254,7 +254,7 @@ def main():
     #Create a player object from this line. 
     player = Player()
 
-    # Create all the levels
+    #This will create all of the levels in the game.
     level_list = []
     level_list.append(levels.Level_01(player))
 

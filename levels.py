@@ -7,7 +7,7 @@ class Level():
 
     # Lists of sprites used in all levels. Add or remove
     # lists as needed for your game. """
-##    platform_list = None
+    platform_list = None
 ##    enemy_list = None
 
     # Background image
@@ -51,6 +51,7 @@ class Level():
         for platform in self.platform_list:
             platform.rect.x += shift_x
 
+        #For enemies in the game. 
         for enemy in self.enemy_list:
             enemy.rect.x += shift_x
 
