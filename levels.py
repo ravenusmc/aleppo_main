@@ -7,7 +7,7 @@ class Level():
 
     # Lists of sprites used in all levels. Add or remove
     # lists as needed for your game. """
-    platform_list = None
+##    platform_list = None
 ##    enemy_list = None
 
     # Background image
@@ -18,13 +18,11 @@ class Level():
     #level_limit = -1000
 
     def __init__(self, player):
-        """ Constructor. Pass in a handle to player. Needed for when moving platforms
-            collide with the player. """
         self.platform_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         self.player = player
 
-    # Update everything on this level
+    #The update method will update everything on the level.
     def update(self):
         """ Update everything in this level."""
         self.platform_list.update()
@@ -51,7 +49,6 @@ class Level():
         for platform in self.platform_list:
             platform.rect.x += shift_x
 
-        #For enemies in the game. 
         for enemy in self.enemy_list:
             enemy.rect.x += shift_x
 

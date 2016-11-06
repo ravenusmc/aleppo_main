@@ -29,37 +29,39 @@ class Player(pygame.sprite.Sprite):
         # Call the parent's constructor
         pygame.sprite.Sprite.__init__(self)
 
-        #Setting up the sprite image for the character. 
+        #Setting up the sprite image for the character. The first two numbers below stand for the
+        #x,y coordinates of the image, the third number is the width and finally, the fourth
+        #number is the height of the image. 
         sprite_sheet = SpriteSheet("boy_2.png")
-        image = sprite_sheet.get_image(8, 210, 28, 210)
+        image = sprite_sheet.get_image(8, 210, 28, 45)
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(40, 210, 28, 210)
+        image = sprite_sheet.get_image(40, 210, 28, 45)
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(70, 210, 28, 210)
+        image = sprite_sheet.get_image(70, 210, 28, 45)
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(103, 210, 28, 210)
+        image = sprite_sheet.get_image(103, 210, 28, 45)
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(136, 210, 28, 210)
+        image = sprite_sheet.get_image(136, 210, 28, 45)
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(166, 210, 28, 210)
+        image = sprite_sheet.get_image(166, 210, 28, 45)
         self.walking_frames_r.append(image)
 
-        image = sprite_sheet.get_image(8, 210, 28, 210)
+        image = sprite_sheet.get_image(8, 210, 28, 45)
         image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(40, 210, 28, 210)
+        image = sprite_sheet.get_image(40, 210, 28, 45)
         image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(70, 210, 28, 210)
+        image = sprite_sheet.get_image(70, 210, 28, 45)
         image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(103, 210, 28, 210)
+        image = sprite_sheet.get_image(103, 210, 28, 45)
         image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(136, 210, 28, 210)
+        image = sprite_sheet.get_image(136, 210, 28, 45)
         image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(166, 210, 28, 210)
+        image = sprite_sheet.get_image(166, 210, 28, 45)
         image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
 
@@ -117,8 +119,9 @@ class Player(pygame.sprite.Sprite):
             if isinstance(block, MovingPlatform):
                 self.rect.x += block.change_x
 
+    #This method is what will calculate the effect of gravity.
     def calc_grav(self):
-        #The code in here will calculate the effect of gravity.
+        
         if self.change_y == 0:
             self.change_y = 1
         else:
@@ -147,15 +150,12 @@ class Player(pygame.sprite.Sprite):
 
     #Changing the direction and speed of the player movement with the below methods.
     def go_left(self):
-        """ Called when the user hits the left arrow. """
         self.change_x = -8
         self.direction = "L"
 
     def go_right(self):
-        """ Called when the user hits the right arrow. """
         self.change_x = 8
         self.direction = "R"
 
     def stop(self):
-        """ Called when the user lets off the keyboard. """
         self.change_x = 0
