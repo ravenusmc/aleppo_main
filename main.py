@@ -135,7 +135,7 @@ def game_intro():
         message_to_screen("Each bomb that passes you gives you one point",
                           black,
                           50)
-        message_to_screen("The moving platforms are there to prevent you from moving",
+        message_to_screen("The moving platforms may help you or slow you down!",
                           black,
                           100)
         message_to_screen("Do not wander to far to the left or right or you will die",
@@ -262,6 +262,7 @@ def main():
     #Here I start the music playing. The -1 means that the music will repeat
     #over and over again.
     pygame.mixer.music.play(-1)
+    
     #When the player dies gameOver will be set to True.
     gameOver = False
 
@@ -283,13 +284,13 @@ def main():
     level_list.append(levels.Level_01(player))
 
     #This sets the current level if I had more than one level. In this game
-    #I only have 1 level.
-    current_level_no = 0
-    current_level = level_list[current_level_no]
+    #I only have 1 level, thus level_list has a value of 0 in it. 
+    current_level = level_list[0]
 
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
 
+    #Setting up the dimensions for the player. 
     player.rect.x = 28
     player.rect.y = S_HEIGHT - player.rect.height
     active_sprite_list.add(player)
@@ -338,7 +339,7 @@ def main():
                     player.jump()
                 if event.key == pygame.K_p:
                     pause()
-
+            #This code is what will stop the player from moving to the left or the right.
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT and player.change_x < 0:
                     player.stop()
@@ -388,9 +389,9 @@ def main():
             thing_startx = random.randrange(0, S_WIDTH)
             dodged += 1
             thing_speed += .5
-            #I stop the music once dodged gets above 20 just to change the 'feeling'
+            #I stop the music once dodged gets above 30 just to change the 'feeling'
             #of the game. 
-            if dodged >= 20:
+            if dodged >= 30:
                 pygame.mixer.music.stop()
                 
         #This code will detect when the player has collided with a bomb. 
@@ -400,6 +401,7 @@ def main():
                 pygame.mixer.Sound.play(explosion_sound)
                 
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
+        
         #I set the timer to 60 seconds per frame. 
         clock.tick(60)
 
