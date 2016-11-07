@@ -1,7 +1,6 @@
 #This file is where the player class will be coded.
 
 import pygame
-
 import constants
 
 from platforms import MovingPlatform
@@ -32,7 +31,7 @@ class Player(pygame.sprite.Sprite):
         #Setting up the sprite image for the character. The first two numbers below stand for the
         #x,y coordinates of the image, the third number is the width and finally, the fourth
         #number is the height of the image. 
-        sprite_sheet = SpriteSheet("boy_2.png")
+        sprite_sheet = SpriteSheet("boy_2.png")#This loads the sprite sheet. 
         image = sprite_sheet.get_image(8, 210, 28, 45)
         self.walking_frames_r.append(image)
         image = sprite_sheet.get_image(40, 210, 28, 45)
@@ -46,6 +45,9 @@ class Player(pygame.sprite.Sprite):
         image = sprite_sheet.get_image(166, 210, 28, 45)
         self.walking_frames_r.append(image)
 
+        #This set of code will flip the image for when the character on the screen
+        #moves to the left. It is similar to the code above however, the image is
+        #simple being flipped for movement to the left. 
         image = sprite_sheet.get_image(8, 210, 28, 45)
         image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
@@ -65,13 +67,14 @@ class Player(pygame.sprite.Sprite):
         image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
 
-        # Set the image the player starts with
+        #Setting the starting image. 
         self.image = self.walking_frames_r[0]
 
-        # Set a referance to the image rect.
+        #Setting a reference.
         self.rect = self.image.get_rect()
 
-    #This method will be what will move the player.
+    #This method will be what will move the player. It will also calculate where
+    #the person is relative to the rest of the world. 
     def update(self):
         
         #The calc_grav() function is what will be used to calculate gravity
@@ -82,14 +85,16 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += self.change_x
         #This is what shifts the world based on the player location
         pos = self.rect.x + self.level.world_shift
+        #This conditional statement is what will set the animation for the
+        #character on the screen. 
         if self.direction == "R":
-            frame = (pos // 30) % len(self.walking_frames_r)
+            frame = (pos // 15) % len(self.walking_frames_r)
             self.image = self.walking_frames_r[frame]
         else:
-            frame = (pos // 30) % len(self.walking_frames_l)
+            frame = (pos // 15) % len(self.walking_frames_l)
             self.image = self.walking_frames_l[frame]
 
-        # See if we hit anything
+        #detecting if the character hits anything.
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         for block in block_hit_list:
             # If we are moving right,

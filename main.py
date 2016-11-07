@@ -7,6 +7,10 @@
 # There was plenty of support from http://programarcadegames.com/python_examples/f.php?file=move_sprite_keyboard_smooth.py
 # as well as from sentdex and his YouTube vidoes-both on his site and the New Boston.
 # Those videos may be found at https://www.youtube.com/watch?v=Vom-Tuo0rcU&list=PLQVvvaa0QuDdLkP8MrOXLe_rKuf6r80KO&index=7
+#
+# The platform game art came from Kenney.nl at http://opengameart.org/content/platformer-art-deluxe.
+
+
 
 #Importing all of the files that will be used in this program.
 import pygame
@@ -206,7 +210,7 @@ def background_information():
 #This function will create the pause menu. 
 def pause():
     paused = True
-
+    number = random.randint(0,100)
     while paused:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -222,11 +226,31 @@ def pause():
         screen.fill(white)
         message_to_screen("Paused",
                           red,
-                          -100,
+                          -200,
                           size="large")
+        if number <= 25:
+            message_to_screen("The Syrian Civil War has led to almost 5 million refugees.",
+                          red,
+                          -90,
+                          size="small")
+        elif number > 25 and number <= 50:
+            message_to_screen("Over 1 million Syrians have requested asylum in other countries.",
+                          red,
+                          -90,
+                          size="small")
+        elif number > 50 and number <= 75:
+            message_to_screen("Over 6 million people have been internally displayed by the war.",
+                          red,
+                          -90,
+                          size="small")
+        elif number > 75 and number <= 100:
+            message_to_screen("It is the worst exodus since the Rwandan genocide 20 years ago.",
+                          red,
+                          -90,
+                          size="small")
         message_to_screen("Press c to play or q to quit.",
                           black,
-                          90)
+                          150)
 
         
         pygame.display.update()

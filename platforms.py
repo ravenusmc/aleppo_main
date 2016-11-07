@@ -3,7 +3,9 @@ import pygame
 
 from spritesheet_functions import SpriteSheet
 
-#These are the platforms that will be used in the game. 
+#These are the platforms that will be used in the game. The first two numbers
+#are the x,y location of the image on the sprite sheet. The third number is the
+#width and finally, the last number, is the height. 
 STONE_PLATFORM_LEFT   = (432, 720, 70, 40)
 STONE_PLATFORM_MIDDLE = (648, 648, 70, 40)
 STONE_PLATFORM_RIGHT  = (792, 648, 70, 40)
@@ -17,7 +19,9 @@ class Platform(pygame.sprite.Sprite):
         #Getting the tiles from the sprite sheet and saving it as a
         #variable sprite_sheet. 
         sprite_sheet = SpriteSheet("tiles_spritesheet.png")
-        # Grab the image for this platform
+        # Grab the image for this platform. The [0] represents the x value,
+        #the [1] is the y value, the [2] is the width and finally, the [3]
+        #is the height.
         self.image = sprite_sheet.get_image(sprite_sheet_data[0],
                                             sprite_sheet_data[1],
                                             sprite_sheet_data[2],

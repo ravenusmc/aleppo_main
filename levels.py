@@ -1,6 +1,8 @@
 import pygame
 
 import constants
+#platforms needs to be imported in order to create the platforms that I will be
+#using in the level
 import platforms
 
 class Level():
@@ -62,6 +64,7 @@ class Level_01(Level):
 
         #I load up my background image in the below line.
         self.background = pygame.image.load("Aleppo_One.png").convert()
+        #This line sets a transparent color.
         self.background.set_colorkey(constants.WHITE)
         self.level_limit = -500
         
