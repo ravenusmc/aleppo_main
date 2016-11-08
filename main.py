@@ -152,6 +152,8 @@ def game_intro():
 def background_information():
     
     intro = True
+
+    rand_number = random.randint(0,100)
     
     while intro:
         for event in pygame.event.get():
@@ -170,37 +172,71 @@ def background_information():
                           red,
                           -300,
                           size="large")
-        message_to_screen("Aleppo is a city in Syria that is currently at the center of the Syrian civil war.",
-                          black,
-                          -230,
-                          size="small")
-        message_to_screen("It may have have been inhabitted as early as 8000 years ago. ",
-                          black,
-                          -200)
-        message_to_screen("It was a city that had a population of over 2 million people.",
-                          black,
-                          -170)
-        message_to_screen("The current population may be around 1.5 million",
-                          black,
-                          -140)
-        message_to_screen("The city is located in North Western Syria, close to Turkey.",
-                          black,
-                          -100)
-        message_to_screen("Many people consider Aleppo the worst hit city in Syria from the war.",
-                          black,
-                          -70)
-        message_to_screen("The city, currently is split between the govenment-west and rebel-held east.",
-                          black,
-                          -40)
-        message_to_screen("For a lot of its history, Aleppo was a 'cultural' location",
-                          black,
-                          -10)
-        message_to_screen("It is the purpose of this game to bring some awareness to Aleppo",
-                          black,
-                          20)
-        message_to_screen("That way, the player may hopefully never ask 'What is Aleppo'",
-                          black,
-                          50)
+        if rand_number < 50:
+            message_to_screen("Aleppo is a city in Syria that is currently at the center of the Syrian civil war.",
+                              black,
+                              -230,
+                              size="small")
+            message_to_screen("It may have have been inhabitted as early as 8000 years ago. ",
+                              black,
+                              -200)
+            message_to_screen("It was a city that had a population of over 2 million people.",
+                              black,
+                              -170)
+            message_to_screen("The current population may be around 1.5 million",
+                              black,
+                              -140)
+            message_to_screen("The city is located in North Western Syria, close to Turkey.",
+                              black,
+                              -100)
+            message_to_screen("Many people consider Aleppo the worst hit city in Syria from the war.",
+                              black,
+                              -70)
+            message_to_screen("The city, currently is split between the govenment-west and rebel-held east.",
+                              black,
+                              -40)
+            message_to_screen("For a lot of its history, Aleppo was a 'cultural' location",
+                              black,
+                              -10)
+            message_to_screen("It is the purpose of this game to bring some awareness to Aleppo",
+                              black,
+                              20)
+            message_to_screen("That way, the player may hopefully never ask 'What is Aleppo'",
+                              black,
+                              50)
+        elif rand_number >= 50:
+            message_to_screen("Aleppo is a city in Syria that in 2011 was its largest city.",
+                              black,
+                              -230,
+                              size="small")
+            message_to_screen("In 2011, Aleppo was estimated to have a population of about 2.5 million. ",
+                              black,
+                              -200)
+            message_to_screen("Although the Syrian Civil War started in 2011, Aleppo did not feel it until 2012.",
+                              black,
+                              -170)
+            message_to_screen("The current population may be around 1.5 million",
+                              black,
+                              -140)
+            message_to_screen("It is widely believed that civilians get purposely targeted in the city.",
+                              black,
+                              -100)
+            message_to_screen("One of the worst weapons of use in the city are the barrel bombs.",
+                              black,
+                              -70)
+            message_to_screen("The Syrian govenment drops these bombs out of helicopters.",
+                              black,
+                              -40)
+            message_to_screen("The bombs have killed thousands and caused wide spread destruction.",
+                              black,
+                              -10)
+            message_to_screen("It is the purpose of this game to bring some awareness to Aleppo",
+                              black,
+                              20)
+            message_to_screen("That way, the player may hopefully never ask 'What is Aleppo'",
+                              black,
+                              50)
+            
         message_to_screen("You may now press p to finally play or q to quit.",
                           black,
                           110)
