@@ -18,7 +18,7 @@ import random
 import levels
 import time
 
-#initialization pygame
+#initialization of pygame
 pygame.init()
 
 #Importing the player class.
@@ -126,24 +126,24 @@ def game_intro():
         screen.fill(white)
         message_to_screen("What is Aleppo",
                           red,
-                          -100,
+                          -200,
                           size="large")
         message_to_screen("The goal of the game is to simply avoid the falling bombs",
                           black,
-                          0,
+                          -100,
                           size="small")
         message_to_screen("Each bomb that passes you gives you one point",
                           black,
-                          50)
-        message_to_screen("The moving platforms may help you or slow you down!",
+                          -50)
+        message_to_screen("The moving platforms may help or slow you down!",
                           black,
-                          100)
+                          0)
         message_to_screen("Do not wander to far to the left or right or you will die",
                           black,
-                          150)
+                          50)
         message_to_screen("Press p to play, p to pause, in the game, and q to quit.",
                           black,
-                          230)
+                          180)
         pygame.display.update()
         clock.tick(15)
 
@@ -153,8 +153,12 @@ def background_information():
     
     intro = True
 
+    #in order to generate different information on the screen, I use a random number that
+    #will display either one set of information of another. 
     rand_number = random.randint(0,100)
-    
+
+    #The loop constantly refreshes the screen awaiting for players commands. When the user tells
+    #the computer to do something, intro is False and the screen moves on. 
     while intro:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -172,6 +176,7 @@ def background_information():
                           red,
                           -300,
                           size="large")
+        #Displays first set of messages if the random number is below 50. 
         if rand_number < 50:
             message_to_screen("Aleppo is a city in Syria that is currently at the center of the Syrian civil war.",
                               black,
@@ -204,6 +209,7 @@ def background_information():
             message_to_screen("That way, the player may hopefully never ask 'What is Aleppo'",
                               black,
                               50)
+        #Displays second set of messages if the random number is 50 or above. 
         elif rand_number >= 50:
             message_to_screen("Aleppo is a city in Syria that in 2011 was its largest city.",
                               black,
@@ -246,6 +252,8 @@ def background_information():
 #This function will create the pause menu. 
 def pause():
     paused = True
+    #in order to generate different information on the screen, I use a random number that
+    #will display either one set of information of another. 
     number = random.randint(0,100)
     while paused:
         for event in pygame.event.get():
@@ -264,21 +272,25 @@ def pause():
                           red,
                           -200,
                           size="large")
+        #First message 
         if number <= 25:
             message_to_screen("The Syrian Civil War has led to almost 5 million refugees.",
                           red,
                           -90,
                           size="small")
+        #Second message
         elif number > 25 and number <= 50:
             message_to_screen("Over 1 million Syrians have requested asylum in other countries.",
                           red,
                           -90,
                           size="small")
+        #Third message
         elif number > 50 and number <= 75:
             message_to_screen("Over 6 million people have been internally displayed by the war.",
                           red,
                           -90,
                           size="small")
+        #Fourth message
         elif number > 75 and number <= 100:
             message_to_screen("It is the worst exodus since the Rwandan genocide 20 years ago.",
                           red,
@@ -427,7 +439,7 @@ def main():
             thing_speed += .5
             #I stop the music once dodged gets above 30 just to change the 'feeling'
             #of the game. 
-            if dodged >= 30:
+            if dodged >= 40:
                 pygame.mixer.music.stop()
                 
         #This code will detect when the player has collided with a bomb. 
@@ -446,7 +458,7 @@ def main():
 
     pygame.quit()
 
-#Here the functions that start the game are called.     
+#Here the functions, that start the game, are called.     
 game_intro()
 background_information()
 main()

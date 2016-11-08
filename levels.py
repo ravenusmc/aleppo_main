@@ -1,5 +1,4 @@
 import pygame
-
 import constants
 #platforms needs to be imported in order to create the platforms that I will be
 #using in the level
@@ -37,13 +36,13 @@ class Level():
         screen.fill(constants.BLUE)
         screen.blit(self.background,(self.world_shift // 3,0))
 
-        # Draw all the sprite lists that we have
+        #Draw all sprites
         self.platform_list.draw(screen)
         self.enemy_list.draw(screen)
 
+    #This method will shift the world when the user moves to the left or right.
     def shift_world(self, shift_x):
-        """ When the user moves left/right and we need to scroll everything: """
-
+        
         # Keep track of the shift amount
         self.world_shift += shift_x
 
@@ -76,7 +75,7 @@ class Level_01(Level):
         block.rect.y = 300
         block.boundary_top = 300
         block.boundary_bottom = 600
-        block.change_y = -1
+        block.change_y = -4
         block.player = self.player
         block.level = self
         self.platform_list.add(block)
@@ -156,7 +155,7 @@ class Level_01(Level):
         block.rect.y = 700
         block.boundary_top = 500
         block.boundary_bottom = 800
-        block.change_y = -1
+        block.change_y = -5
         block.player = self.player
         block.level = self
         self.platform_list.add(block)

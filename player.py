@@ -1,11 +1,13 @@
 #This file is where the player class will be coded.
 
+#importing the files which will be used in this file.
 import pygame
 import constants
 
 from platforms import MovingPlatform
 from spritesheet_functions import SpriteSheet
 
+#The player class which will set up the player with his movements and sprites.
 class Player(pygame.sprite.Sprite):
     
     #Setting variables for the speed of the player.
@@ -139,9 +141,9 @@ class Player(pygame.sprite.Sprite):
             self.change_y = 0
             self.rect.y = constants.SCREEN_HEIGHT - self.rect.height
 
+    #This function is called when the user presses the up arrow to jump.
     def jump(self):
-        """ Called when user hits 'jump' button. """
-
+        
         # move down a bit and see if there is a platform below us.
         # Move down 2 pixels because it doesn't work well if we only move down 1
         # when working with a platform moving down.
