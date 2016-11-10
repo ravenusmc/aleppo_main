@@ -111,7 +111,8 @@ def things(thingx, thingy, thingw, thingh, color):
 def game_intro():
     
     intro = True
-    
+    #This while loop will display the welcoming message. When the player hits
+    #either p or q, the function will exit and move on to the next screen. 
     while intro:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -123,8 +124,9 @@ def game_intro():
                 if event.key == pygame.K_q:
                     pygame.quit()
                     quit()
-                
+        #making the background color of the screen white.         
         screen.fill(white)
+        #Display the title screen messages to the user. 
         message_to_screen("What is Aleppo",
                           red,
                           -200,
