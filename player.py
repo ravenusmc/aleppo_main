@@ -22,9 +22,6 @@ class Player(pygame.sprite.Sprite):
     #Setting the initial direction for which way the player will face.
     direction = "R"
 
-    # List of sprites we can bump against
-    #level = None
-
     #Initialization the character
     def __init__(self):
         # Call the parent's constructor

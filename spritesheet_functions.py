@@ -1,7 +1,6 @@
 #This file is what will allow me to pull in individual sprite sheets.
 
 import pygame
-
 import constants
 
 #This class is used to grab the sprite sheets.

@@ -15,8 +15,9 @@
 #Importing all of the files that will be used in this program.
 import pygame
 import random
-import levels
 import time
+import levels
+
 
 #initialization of pygame
 pygame.init()
@@ -24,7 +25,7 @@ pygame.init()
 #Importing the player class.
 from player import Player
 
-#All of variables, which will be used for the music will be set up here. 
+#All of variables, which will be used for the music, will be set up here. 
 bomb = pygame.image.load('bomb.png')
 bomb_sound = pygame.mixer.Sound("bomb.wav")
 explosion_sound = pygame.mixer.Sound("explosion.wav")

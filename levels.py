@@ -6,14 +6,6 @@ import platforms
 
 class Level():
 
-    # Lists of sprites used in all levels. Add or remove
-    # lists as needed for your game. """
-##    platform_list = None
-##    enemy_list = None
-
-    # Background image
-    #background = None
-
     # How far this world has been scrolled left/right
     world_shift = 0
     #level_limit = -1000

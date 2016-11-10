@@ -40,9 +40,6 @@ class MovingPlatform(Platform):
     boundary_left = 0
     boundary_right = 0
 
-##    level = None
-##    player = None
-
     def update(self):
         # Move left/right
         self.rect.x += self.change_x
