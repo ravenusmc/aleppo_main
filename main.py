@@ -98,7 +98,7 @@ def out_of_bounds():
 #This function will be what keeps track of the players score
 def things_dodged(count):
     font = pygame.font.SysFont(None, 25)
-    text = font.render("Current Score: " + str(count), True, green)
+    text = font.render("Bombs Avoided: " + str(count), True, green)
     screen.blit(text,(0,0))
 
     
@@ -246,7 +246,7 @@ def background_information():
                               black,
                               50)
             
-        message_to_screen("You may now press p to finally play or q to quit.",
+        message_to_screen("You may now press p to finally PLAY or q to QUIT.",
                           black,
                           110)
         pygame.display.update()
@@ -254,22 +254,31 @@ def background_information():
 
 #This function will create the pause menu. 
 def pause():
+
+    #The paused variable is set to true so when the pause screen is called, the game
+    #goes into a while loop.
     paused = True
-    #in order to generate different information on the screen, I use a random number that
+    
+    #In order to generate different information on the screen, I use a random number that
     #will display either one set of information of another. 
     number = random.randint(0,100)
+    
     while paused:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
             if event.type == pygame.KEYDOWN:
+                #If c is pressed the user will exit the pause screen and continue
+                #playing.
                 if event.key == pygame.K_c:
                     paused = False
+                #If q is pressed the game will exit and then close. 
                 elif event.key == pygame.K_q:
                     pygame.quit()
                     quit()
-                
+        #The background of the pause screen is filled with white so that the player
+        #is not able to see where the next bomb will be coming from. 
         screen.fill(white)
         message_to_screen("Paused",
                           red,
@@ -319,18 +328,20 @@ def main():
 
     #These are the variables for the falling bombs. 
     thing_startx = random.randrange(0, S_WIDTH)
+    #The bomb will start 300 pixels above the screen. 
     thing_starty = -300
+    #This is the speed of the bomb. As each bomb falls this number will increase.
     thing_speed = 3
     thing_width = 128
     thing_height = 128
 
-    #This variable keep tracks of the score:
+    #This variable keep tracks of the amount of bombs the player has avoided:
     dodged = 0
 
     #Create a player object from this line. 
     player = Player()
 
-    #This will create all of the levels in the game.
+    #This will pull in all of the levels in the game.
     level_list = []
     level_list.append(levels.Level_01(player))
 
@@ -338,6 +349,7 @@ def main():
     #I only have 1 level, thus level_list has a value of 0 in it. 
     current_level = level_list[0]
 
+    #This is what sets the player up in the current level.
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
 
@@ -350,7 +362,7 @@ def main():
     #will keep on repeating until done is equal to True.
     done = False
 
-    #The main game loop in the program
+    #The main game loop in the game. It will continue to run until the user quits or dies.
     while not done:
         #If gameOver is equal to True during the game loop then this
         #conditional statement will launch. 
