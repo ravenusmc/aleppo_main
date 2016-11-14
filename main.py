@@ -1,15 +1,15 @@
 ################################################
+# BACKGROUND INFORMATION:
 # This game was made by Mike Cuddy, Oct/Nov of 2016
 #
 #
-# Enough cannot be said from the tutorials from paul craven at program arcade games. His site link is below.
+# Enough cannot be said from the tutorials from Paul Craven at program arcade games. His site link is below.
 # It is from that site that I was able to get code to build this game
-# There was plenty of support from http://programarcadegames.com/python_examples/f.php?file=move_sprite_keyboard_smooth.py
+# Paul Craven's site link which helped a lot with this game: http://programarcadegames.com/python_examples/f.php?file=move_sprite_keyboard_smooth.py
 # as well as from sentdex and his YouTube vidoes-both on his site and the New Boston.
 # Those videos may be found at https://www.youtube.com/watch?v=Vom-Tuo0rcU&list=PLQVvvaa0QuDdLkP8MrOXLe_rKuf6r80KO&index=7
 #
 # The platform game art came from Kenney.nl at http://opengameart.org/content/platformer-art-deluxe.
-
 
 
 #Importing all of the files that will be used in this program.
@@ -17,7 +17,6 @@ import pygame
 import random
 import time
 import levels
-
 
 #initialization of pygame
 pygame.init()
@@ -50,7 +49,7 @@ smallfont = pygame.font.SysFont("comicsansms", 25)
 medfont = pygame.font.SysFont("comicsansms", 50)
 largefont = pygame.font.SysFont("comicsansms", 80)
 
-#Setting up the screen display and title for the display.
+#Setting up the screen display, title for the display and pygame clock.
 size = [S_WIDTH, S_HEIGHT]
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("What is Aleppo")
@@ -71,7 +70,9 @@ def text_objects(text, color, size):
 #This function will display text to the screen
 def message_to_screen(msg, color, y_displace=0, size="small"):
     textSurf, textRect = text_objects(msg, color, size)
+    #This line will center the text on the screen.
     textRect.center = (S_WIDTH / 2), (S_HEIGHT /2 ) + y_displace
+    #This line will actually display the text on the screen. 
     screen.blit(textSurf, textRect)
 
 #This function will alert the user if they die. 
@@ -95,12 +96,12 @@ def out_of_bounds():
                           -70,
                           size="large")
     
-#This function will be what keeps track of the players score
+#This function will be what keeps track of the players score. It will display the bombs avoided message to the
+#game screen as well as the number that have been avoided. 
 def things_dodged(count):
     font = pygame.font.SysFont(None, 25)
     text = font.render("Bombs Avoided: " + str(count), True, green)
     screen.blit(text,(0,0))
-
     
 #This function will create the bombs that will fall from the sky.
 def things(thingx, thingy, thingw, thingh, color):
@@ -151,9 +152,10 @@ def game_intro():
         clock.tick(15)
 
 #This function will provide background information about the city of Aleppo
-#to the user.
+#to the user. It will display one of two messages depending on which random number is drawn.
 def background_information():
-    
+
+    #The intro variable is set to true so that the while loop may execute.
     intro = True
 
     #in order to generate different information on the screen, I use a random number that
@@ -252,7 +254,8 @@ def background_information():
         pygame.display.update()
         clock.tick(15)
 
-#This function will create the pause menu. 
+#This function will create the pause menu. Each time that the player pauses the screen, they will also
+#see a random fact about the current situation in Aleppo, Syria. 
 def pause():
 
     #The paused variable is set to true so when the pause screen is called, the game
@@ -260,7 +263,7 @@ def pause():
     paused = True
     
     #In order to generate different information on the screen, I use a random number that
-    #will display either one set of information of another. 
+    #will display either one set of facts or another. 
     number = random.randint(0,100)
     
     while paused:
@@ -320,7 +323,8 @@ def pause():
 def main():
     
     #Here I start the music playing. The -1 means that the music will repeat
-    #over and over again.
+    #over and over again. However, the music will turn off if the player avoids 40
+    #bombs. 
     pygame.mixer.music.play(-1)
     
     #When the player dies gameOver will be set to True.
@@ -358,7 +362,7 @@ def main():
     player.rect.y = S_HEIGHT - player.rect.height
     active_sprite_list.add(player)
 
-    #With this variable being set to False, means that the below game loop
+    #With this variable being set to False, the below game loop
     #will keep on repeating until done is equal to True.
     done = False
 
@@ -450,9 +454,11 @@ def main():
             pygame.mixer.Sound.play(bomb_sound)
             thing_starty = 0 - thing_height
             thing_startx = random.randrange(0, S_WIDTH)
+            #Increasing the score count of each bomb that passes the player
             dodged += 1
+            #increasing the speed of the bombs as they pass the player.
             thing_speed += .5
-            #I stop the music once dodged gets above 30 just to change the 'feeling'
+            #I stop the music once dodged gets above 40 just to change the 'feeling'
             #of the game. 
             if dodged >= 40:
                 pygame.mixer.music.stop()
@@ -460,6 +466,7 @@ def main():
         #This code will detect when the player has collided with a bomb. 
         if player.rect.y < thing_starty + thing_height and thing_starty + thing_height >= player.rect.y and thing_starty + thing_height <= 800:
             if player.rect.x > thing_startx and player.rect.x + 28 < thing_startx + thing_width:
+                #If a player has collided with a bomb, the game is over. 
                 gameOver = True
                 pygame.mixer.Sound.play(explosion_sound)
                 
@@ -474,6 +481,6 @@ def main():
     pygame.quit()
 
 #Here the functions, that start the game, are called.     
-game_intro()
-background_information()
-main()
+game_intro() #Calling game_intro function
+background_information() #Calling background information function
+main() #Calling main function

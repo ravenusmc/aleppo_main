@@ -1,4 +1,5 @@
-#All global constants will be declared in this file. 
+#All global constants will be declared in this file. The constants in this file
+#will be for all files except for the main.py file.
 
 #Constants for all of the colors. 
 BLUE     = (   0,   0, 255)
