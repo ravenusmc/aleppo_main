@@ -3,7 +3,6 @@
 #importing the files which will be used in this file.
 import pygame
 import constants
-
 from platforms import MovingPlatform
 from spritesheet_functions import SpriteSheet
 
@@ -19,7 +18,8 @@ class Player(pygame.sprite.Sprite):
     walking_frames_l = []
     walking_frames_r = []
 
-    #Setting the initial direction for which way the player will face.
+    #Setting the initial direction for which way the player will face, in this case to
+    #the right. 
     direction = "R"
 
     #Initialization the character
@@ -82,8 +82,10 @@ class Player(pygame.sprite.Sprite):
 
         #This code here is what will move the player left and right
         self.rect.x += self.change_x
+        
         #This is what shifts the world based on the player location
         pos = self.rect.x + self.level.world_shift
+        
         #This conditional statement is what will set the animation for the
         #character on the screen. 
         if self.direction == "R":
@@ -93,7 +95,7 @@ class Player(pygame.sprite.Sprite):
             frame = (pos // 15) % len(self.walking_frames_l)
             self.image = self.walking_frames_l[frame]
 
-        #detecting if the character hits anything.
+        #detecting if the character hits a platform.
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         for block in block_hit_list:
             # If we are moving right,
@@ -154,12 +156,17 @@ class Player(pygame.sprite.Sprite):
 
     #Changing the direction and speed of the player movement with the below methods.
     def go_left(self):
+        #The -8 represents the characters speed, in this case to the left. 
         self.change_x = -8
+        #The L means that the player is moving to the left. 
         self.direction = "L"
 
     def go_right(self):
+        #The 8 represents the characters speed, in this case to the right. 
         self.change_x = 8
+        #The R means that the player is moving to the right.
         self.direction = "R"
-
+        
+    #stopping the character
     def stop(self):
         self.change_x = 0

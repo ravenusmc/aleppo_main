@@ -464,7 +464,7 @@ def main():
                 pygame.mixer.music.stop()
                 
         #This code will detect when the player has collided with a bomb. 
-        if player.rect.y < thing_starty + thing_height and thing_starty + thing_height >= player.rect.y and thing_starty + thing_height <= 800:
+        if player.rect.y < thing_starty + thing_height and thing_starty + thing_height >= player.rect.y and thing_starty + thing_height <= 600:
             if player.rect.x > thing_startx and player.rect.x + 28 < thing_startx + thing_width:
                 #If a player has collided with a bomb, the game is over. 
                 gameOver = True

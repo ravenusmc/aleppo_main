@@ -1,13 +1,12 @@
 #This file is what will allow me to pull in individual sprite sheets.
 
+
+#importing the pygame library and the constants file. 
 import pygame
 import constants
 
 #This class is used to grab the sprite sheets.
 class SpriteSheet(object):
-
-    # This points to our sprite sheet image
-    #sprite_sheet = None
 
     def __init__(self, file_name):
 
