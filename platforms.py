@@ -1,6 +1,7 @@
 #The code in this file will be dealing with the platforms in the game.
-import pygame
 
+#Importing other modules that will be used in this file.
+import pygame
 from spritesheet_functions import SpriteSheet
 
 #These are the platforms that will be used in the game. The first two numbers
@@ -31,25 +32,26 @@ class Platform(pygame.sprite.Sprite):
 
 #Setting up a class for the moving platform
 class MovingPlatform(Platform):
-    
+
+    #Setting the change in direction variables. 
     change_x = 0
     change_y = 0
 
+    #Setting the boundaries for the movement of the platforms.
     boundary_top = 0
     boundary_bottom = 0
     boundary_left = 0
     boundary_right = 0
 
+    #An update method to update movement of the platforms
     def update(self):
+        
         # Move left/right
         self.rect.x += self.change_x
 
         # See if we hit the player
         hit = pygame.sprite.collide_rect(self, self.player)
         if hit:
-            # We did hit the player. Shove the player around and
-            # assume he/she won't hit anything else.
-
             # If we are moving right, set our right side
             # to the left side of the item we hit
             if self.change_x < 0:
