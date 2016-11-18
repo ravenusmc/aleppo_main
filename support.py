@@ -94,6 +94,15 @@ def game_intro():
         message_to_screen("Press p to play, p to pause, in the game, and q to quit.",
                           black,
                           180)
+        message_to_screen("Press the right arrow to move right, Press the left arrow to move left.",
+                          black,
+                          220)
+        message_to_screen("The up arrow will make the player jump.",
+                          black,
+                          260)
+        message_to_screen("View the How To Manual for more detailed instructions.",
+                          black,
+                          300)
         pygame.display.update()
         clock.tick(15)
 
@@ -121,7 +130,8 @@ def background_information():
                 if event.key == pygame.K_q:
                     pygame.quit()
                     quit()
-                
+
+        #This line will make the background white.        
         screen.fill(white)
         message_to_screen("Background Information",
                           red,
@@ -253,7 +263,7 @@ def pause():
                           size="small")
         #Fourth message
         elif number > 75 and number <= 100:
-            message_to_screen("It is the worst exodus since the Rwandan genocide 20 years ago.",
+            message_to_screen("It is the worst exodus since the Rwandan genocide in 1994.",
                           red,
                           -90,
                           size="small")

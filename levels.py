@@ -1,15 +1,18 @@
+#importing the files that are needed for this file.
 import pygame
 import constants
 #platforms needs to be imported in order to create the platforms that I will be
 #using in the level
 import platforms
 
+#Creating a level class which will hold the 'game world'
 class Level():
 
-    # How far this world has been scrolled left/right
+    #This variable will determine how far the level has been scrolled left
+    #to right.
     world_shift = 0
-    #level_limit = -1000
 
+    #Initializing method
     def __init__(self, player):
         self.platform_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
@@ -17,18 +20,17 @@ class Level():
 
     #The update method will update everything on the level.
     def update(self):
-        """ Update everything in this level."""
         self.platform_list.update()
         self.enemy_list.update()
 
+    #This method will draw everything in the level
     def draw(self, screen):
-        """ Draw everything on this level. """
-
+        
         #This will draw/change the background. 
         screen.fill(constants.BLUE)
         screen.blit(self.background,(self.world_shift // 3,0))
 
-        #Draw all sprites
+        #Draw all sprites to the game world
         self.platform_list.draw(screen)
         self.enemy_list.draw(screen)
 
@@ -45,17 +47,19 @@ class Level():
         for enemy in self.enemy_list:
             enemy.rect.x += shift_x
 
-# Create platforms for the level
+#This class will create the level. It will really be focusing on creating
+#all of the platforms in the level
 class Level_01(Level):
+    
    #This class is what will create the level for the game. 
     def __init__(self, player):
 
-        # Call the parent constructor
+        #Calling the parent constructor.
         Level.__init__(self, player)
 
         #I load up my background image in the below line.
         self.background = pygame.image.load("Aleppo_One.png").convert()
-        #This line sets a transparent color.
+        #This line sets a transparent color for the background.
         self.background.set_colorkey(constants.WHITE)
         self.level_limit = -500
         
@@ -65,7 +69,7 @@ class Level_01(Level):
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_LEFT)
         block.rect.x = 300
         block.rect.y = 300
-        block.boundary_top = 300
+        block.boundary_top = 200
         block.boundary_bottom = 600
         block.change_y = -4
         block.player = self.player
@@ -83,10 +87,10 @@ class Level_01(Level):
         self.platform_list.add(block)
 
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
-        block.rect.x = 700
-        block.rect.y = 700
+        block.rect.x = 600
+        block.rect.y = 600
         block.boundary_top = 500
-        block.boundary_bottom = 800
+        block.boundary_bottom = 700
         block.change_y = -1
         block.player = self.player
         block.level = self
@@ -117,7 +121,7 @@ class Level_01(Level):
         block.rect.y = 700
         block.boundary_top = 500
         block.boundary_bottom = 800
-        block.change_y = -3
+        block.change_y = -6
         block.player = self.player
         block.level = self
         self.platform_list.add(block)
@@ -127,7 +131,7 @@ class Level_01(Level):
         block.rect.y = 700
         block.boundary_top = 500
         block.boundary_bottom = 800
-        block.change_y = -3
+        block.change_y = -4
         block.player = self.player
         block.level = self
         self.platform_list.add(block)
@@ -144,10 +148,112 @@ class Level_01(Level):
 
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
         block.rect.x = 2800
-        block.rect.y = 700
+        block.rect.y = 600
         block.boundary_top = 500
         block.boundary_bottom = 800
         block.change_y = -5
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        #These platforms prevent the user from going to far to the right.
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 4200
+        block.rect.y = 550
+        block.boundary_top = 550
+        block.boundary_bottom = 600
+        block.change_y = -3
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 4200
+        block.rect.y = 500
+        block.boundary_top = 500
+        block.boundary_bottom = 550
+        block.change_y = -3
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 4200
+        block.rect.y = 450
+        block.boundary_top = 450
+        block.boundary_bottom = 500
+        block.change_y = -1
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 4200
+        block.rect.y = 400
+        block.boundary_top = 400
+        block.boundary_bottom = 450
+        block.change_y = -1
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 4200
+        block.rect.y = 350
+        block.boundary_top = 350
+        block.boundary_bottom = 400
+        block.change_y = -2
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        #These platforms prevent the user from going to far to the Left.
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = -50
+        block.rect.y = 550
+        block.boundary_top = 550
+        block.boundary_bottom = 600
+        block.change_y = -3
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = -50
+        block.rect.y = 500
+        block.boundary_top = 500
+        block.boundary_bottom = 550
+        block.change_y = -3
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = -50
+        block.rect.y = 450
+        block.boundary_top = 450
+        block.boundary_bottom = 500
+        block.change_y = -1
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = -50
+        block.rect.y = 400
+        block.boundary_top = 400
+        block.boundary_bottom = 450
+        block.change_y = -1
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = -50
+        block.rect.y = 350
+        block.boundary_top = 350
+        block.boundary_bottom = 400
+        block.change_y = -2
         block.player = self.player
         block.level = self
         self.platform_list.add(block)

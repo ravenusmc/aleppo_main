@@ -8,9 +8,11 @@
 # Paul Craven's site link which helped a lot with this game:
 # http://programarcadegames.com/
 # as well as from sentdex and his YouTube vidoes-both on his site and the New Boston.
-# Those videos may be found at https://www.youtube.com/watch?v=Vom-Tuo0rcU&list=PLQVvvaa0QuDdLkP8MrOXLe_rKuf6r80KO&index=7
+# Those videos may be found at:
+# https://www.youtube.com/watch?v=Vom-Tuo0rcU&list=PLQVvvaa0QuDdLkP8MrOXLe_rKuf6r80KO&index=7
 #
-# The platform game art came from Kenney.nl at http://opengameart.org/content/platformer-art-deluxe.
+# The platform game art came from Kenney.nl at:
+# http://opengameart.org/content/platformer-art-deluxe.
 
 
 #Importing all of the files that will be used in this program.
@@ -115,7 +117,8 @@ def main():
                         gameOver = False
                     if event.key == pygame.K_p:
                         main()
-
+                        
+        #This for loop will get the users input and respond to it. 
         for event in pygame.event.get(): 
             if event.type == pygame.QUIT:
                 done = True 
@@ -157,13 +160,13 @@ def main():
             diff = 120 - player.rect.x
             player.rect.x = 120
             current_level.shift_world(diff)
-
+        
         #These lines of code are what will cause a game over if the player
         #wonders to far to the left or to the right.
         current_position = player.rect.x + current_level.world_shift    
         if current_position < -4000 or current_position > 600:
             gameOver = True
-
+        #print(current_position)
         #Drawing objects to the game world should be made below this line.
         current_level.draw(support.screen)
         active_sprite_list.draw(support.screen)
@@ -195,7 +198,7 @@ def main():
                 gameOver = True
                 pygame.mixer.Sound.play(explosion_sound)
                 
-        # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
+        #All code to draw to the screen should be above this point
         
         #I set the timer to 60 seconds per frame. 
         support.clock.tick(60)
