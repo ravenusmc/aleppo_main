@@ -21,7 +21,6 @@ class Level():
     #The update method will update everything on the level.
     def update(self):
         self.platform_list.update()
-        self.enemy_list.update()
 
     #This method will draw everything in the level
     def draw(self, screen):
@@ -44,11 +43,10 @@ class Level():
         for platform in self.platform_list:
             platform.rect.x += shift_x
 
-        for enemy in self.enemy_list:
-            enemy.rect.x += shift_x
-
 #This class will create the level. It will really be focusing on creating
-#all of the platforms in the level
+#all of the platforms in the level. The code in this class is quite massive.
+#It is because this is basically what is making all of the obstacles, platforms,
+#for the game. 
 class Level_01(Level):
     
    #This class is what will create the level for the game. 
@@ -66,6 +64,7 @@ class Level_01(Level):
         # Adding moving platforms for the player. There are quite a lot
         #added here which I did soley to get a better understanding of how
         #to add these platforms
+        #Platform 1
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_LEFT)
         block.rect.x = 300
         block.rect.y = 300
@@ -76,6 +75,7 @@ class Level_01(Level):
         block.level = self
         self.platform_list.add(block)
 
+        #Platform 2
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_MIDDLE)
         block.rect.x = 500
         block.rect.y = 500
@@ -86,6 +86,7 @@ class Level_01(Level):
         block.level = self
         self.platform_list.add(block)
 
+        #Platform 3
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
         block.rect.x = 600
         block.rect.y = 600
@@ -96,6 +97,7 @@ class Level_01(Level):
         block.level = self
         self.platform_list.add(block)
 
+        #Platform 4
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_LEFT)
         block.rect.x = 900
         block.rect.y = 700
@@ -106,6 +108,7 @@ class Level_01(Level):
         block.level = self
         self.platform_list.add(block)
 
+        #Platform 5
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_MIDDLE)
         block.rect.x = 1400
         block.rect.y = 700
@@ -116,40 +119,55 @@ class Level_01(Level):
         block.level = self
         self.platform_list.add(block)
 
+        #Platform 6
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
         block.rect.x = 1700
         block.rect.y = 700
-        block.boundary_top = 500
+        block.boundary_top = 300
         block.boundary_bottom = 800
         block.change_y = -6
         block.player = self.player
         block.level = self
         self.platform_list.add(block)
 
-        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_LEFT)
-        block.rect.x = 2000
-        block.rect.y = 700
-        block.boundary_top = 500
-        block.boundary_bottom = 800
-        block.change_y = -4
-        block.player = self.player
-        block.level = self
-        self.platform_list.add(block)
-
+        #Platform 7
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_MIDDLE)
-        block.rect.x = 2500
+        block.rect.x = 2300
         block.rect.y = 700
-        block.boundary_top = 500
+        block.boundary_top = 200
         block.boundary_bottom = 800
         block.change_y = -1
         block.player = self.player
         block.level = self
         self.platform_list.add(block)
 
+        #Platform 8
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
         block.rect.x = 2800
         block.rect.y = 600
         block.boundary_top = 500
+        block.boundary_bottom = 800
+        block.change_y = -5
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        #Platform 9
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 3000
+        block.rect.y = 600
+        block.boundary_top = 300
+        block.boundary_bottom = 800
+        block.change_y = -5
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        #Platform 10
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 3400
+        block.rect.y = 600
+        block.boundary_top = 300
         block.boundary_bottom = 800
         block.change_y = -5
         block.player = self.player
@@ -355,6 +373,128 @@ class Level_01(Level):
         block.rect.y = 350
         block.boundary_top = 350
         block.boundary_bottom = 400
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        #These platforms form a wall that the player must get through to progress
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 2000
+        block.rect.y = 550
+        block.boundary_top = 550
+        block.boundary_bottom = 600
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 2000
+        block.rect.y = 500
+        block.boundary_top = 500
+        block.boundary_bottom = 550
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 2000
+        block.rect.y = 450
+        block.boundary_top = 450
+        block.boundary_bottom = 500
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 2000
+        block.rect.y = 400
+        block.boundary_top = 400
+        block.boundary_bottom = 450
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 2000
+        block.rect.y = 350
+        block.boundary_top = 350
+        block.boundary_bottom = 400
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+        
+        #These platforms form a wall that the player must get through to progress
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 3200
+        block.rect.y = 550
+        block.boundary_top = 550
+        block.boundary_bottom = 600
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 3200
+        block.rect.y = 500
+        block.boundary_top = 500
+        block.boundary_bottom = 550
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 3200
+        block.rect.y = 450
+        block.boundary_top = 450
+        block.boundary_bottom = 500
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 3200
+        block.rect.y = 400
+        block.boundary_top = 400
+        block.boundary_bottom = 450
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 3200
+        block.rect.y = 350
+        block.boundary_top = 350
+        block.boundary_bottom = 400
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 3200
+        block.rect.y = 250
+        block.boundary_top = 250
+        block.boundary_bottom = 350
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 3200
+        block.rect.y = 200
+        block.boundary_top = 200
+        block.boundary_bottom = 250
         block.change_y = 0
         block.player = self.player
         block.level = self
