@@ -18,7 +18,7 @@ class Level():
         self.enemy_list = pygame.sprite.Group()
         self.player = player
 
-    #The update method will update everything on the level.
+    #The update method will update the platforms on the level.
     def update(self):
         self.platform_list.update()
 
@@ -29,17 +29,17 @@ class Level():
         screen.fill(constants.BLUE)
         screen.blit(self.background,(self.world_shift // 3,0))
 
-        #Draw all sprites to the game world
+        #Draw the platforms to the game world
         self.platform_list.draw(screen)
-        self.enemy_list.draw(screen)
 
     #This method will shift the world when the user moves to the left or right.
     def shift_world(self, shift_x):
         
-        # Keep track of the shift amount
+        #This line keeps track of the shift amount
         self.world_shift += shift_x
 
-        # Go through all the sprite lists and shift
+        #This line goes through the platform lists and shifts the platforms
+        #per the player movement
         for platform in self.platform_list:
             platform.rect.x += shift_x
 
@@ -145,9 +145,9 @@ class Level_01(Level):
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
         block.rect.x = 2800
         block.rect.y = 600
-        block.boundary_top = 500
+        block.boundary_top = 300
         block.boundary_bottom = 800
-        block.change_y = -5
+        block.change_y = -8
         block.player = self.player
         block.level = self
         self.platform_list.add(block)
@@ -499,5 +499,77 @@ class Level_01(Level):
         block.player = self.player
         block.level = self
         self.platform_list.add(block)
+
+        #These platforms form a wall that the player must get through to progress
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 2500
+        block.rect.y = 550
+        block.boundary_top = 550
+        block.boundary_bottom = 600
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 2500
+        block.rect.y = 500
+        block.boundary_top = 500
+        block.boundary_bottom = 550
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 2500
+        block.rect.y = 450
+        block.boundary_top = 450
+        block.boundary_bottom = 500
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 2500
+        block.rect.y = 400
+        block.boundary_top = 400
+        block.boundary_bottom = 450
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 2500
+        block.rect.y = 350
+        block.boundary_top = 350
+        block.boundary_bottom = 400
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 2500
+        block.rect.y = 250
+        block.boundary_top = 250
+        block.boundary_bottom = 350
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
+        block.rect.x = 2500
+        block.rect.y = 200
+        block.boundary_top = 200
+        block.boundary_bottom = 250
+        block.change_y = 0
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
 
 

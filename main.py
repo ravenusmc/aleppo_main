@@ -2,7 +2,6 @@
 # BACKGROUND INFORMATION:
 # This game was made by Mike Cuddy, Oct/Nov of 2016
 #
-#
 # Enough cannot be said from the tutorials from Paul Craven at program arcade games.
 # It is from that site that I was able to get code to build this game
 # Paul Craven's site link which helped a lot with this game:
@@ -11,7 +10,7 @@
 # Those videos may be found at:
 # https://www.youtube.com/watch?v=Vom-Tuo0rcU&list=PLQVvvaa0QuDdLkP8MrOXLe_rKuf6r80KO&index=7
 #
-# The platform game art came from Kenney.nl at:
+# The platform game art came from the following site:
 # http://opengameart.org/content/platformer-art-deluxe.
 
 
@@ -34,8 +33,9 @@ bomb_sound = pygame.mixer.Sound("bomb.wav")
 explosion_sound = pygame.mixer.Sound("explosion.wav")
 pygame.mixer.music.load("Grave_Matters.wav")
     
-#This function will be what keeps track of the players score. It will display the bombs avoided message to the
-#game screen as well as the number that have been avoided. 
+#This function will be what keeps track of the players score.
+#It will display the bombs avoided message to the game screen
+#as well as the number that have been avoided. 
 def things_dodged(count):
     font = pygame.font.SysFont(None, 25)
     text = font.render("Bombs Avoided: " + str(count), True, support.green)
@@ -62,10 +62,11 @@ def main():
     thing_starty = -300
     #This is the speed of the bomb. As each bomb falls this number will increase.
     thing_speed = 3
+    #This is the width and height of the bomb image
     thing_width = 128
     thing_height = 128
 
-    #This variable keep tracks of the amount of bombs the player has avoided:
+    #This variable keep tracks of the amount of bombs the player has avoided
     dodged = 0
 
     #Create a player object from this line. 
@@ -83,7 +84,7 @@ def main():
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
 
-    #Setting up the dimensions for the player. 
+    #Setting up the dimensions of the player. 
     player.rect.x = 28
     player.rect.y = support.S_HEIGHT - player.rect.height
     active_sprite_list.add(player)
@@ -105,16 +106,20 @@ def main():
                               support.red, -50, size="small")
             support.message_to_screen("Press p to play agian or Q to Quit", support.red, 0, size="medium")
             pygame.display.update()
-            
+
+        #This is the gameOver loop that will run when the player dies.    
         while gameOver == True:
             for event in pygame.event.get(): 
                 if event.type == pygame.QUIT:
                     gameOver = False
                     done = True
+                #This conditional statement gets the user input and responds to it for the gameover loop.
                 if event.type == pygame.KEYDOWN:
+                    #If the player hits q the game will exit out.
                     if event.key == pygame.K_q:
                         done = True
                         gameOver = False
+                    #If the player hits p the main function gets recalled and the game starts again.
                     if event.key == pygame.K_p:
                         main()
                         
@@ -126,9 +131,9 @@ def main():
             #on the screen. 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    player.go_left()
+                    player.left()
                 if event.key == pygame.K_RIGHT:
-                    player.go_right()
+                    player.right()
                 if event.key == pygame.K_UP:
                     player.jump()
                 if event.key == pygame.K_p:
@@ -136,11 +141,11 @@ def main():
             #This code is what will stop the player from moving to the left or the right.
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT and player.change_x < 0:
-                    player.stop()
+                    player.stop_moving()
                 if event.key == pygame.K_RIGHT and player.change_x > 0:
-                    player.stop()
+                    player.stop_moving()
 
-        #The player is updated 
+        #All of the active sprites are updated
         active_sprite_list.update()
 
         #This line is where the non character elements get updated such as
@@ -148,7 +153,8 @@ def main():
         current_level.update()
 
         #This line is what will shift the screen to the left if the player
-        #moves towards the right hand side.
+        #moves towards the right hand side. Basically, the player moves 500 pixels
+        #out and then the game world will shift.
         if player.rect.x >= 500:
             diff = player.rect.x - 500
             player.rect.x = 500
@@ -166,10 +172,14 @@ def main():
         current_position = player.rect.x + current_level.world_shift    
         if current_position < -4000 or current_position > 600:
             gameOver = True
-        #print(current_position)
+            
         #Drawing objects to the game world should be made below this line.
+
+        #Drawing the current level to the screen
         current_level.draw(support.screen)
+        #Drawing the current sprite list to the screen.
         active_sprite_list.draw(support.screen)
+        #This line is what will display the score in the top left hand corner of the screen.
         things_dodged(dodged)
 
         #logic for falling bombs
@@ -200,12 +210,13 @@ def main():
                 
         #All code to draw to the screen should be above this point
         
-        #I set the timer to 60 seconds per frame. 
+        #I set the timer to 60 frames per second. 
         support.clock.tick(60)
 
         #This will update the game screen at ever pass. 
         pygame.display.flip()
-
+        
+    #This will shut down the game when the player wants to exit
     pygame.quit()
 
 #Here the functions, that start the game, are called.     

@@ -1,6 +1,7 @@
 #All global constants will be declared in this file. The constants in this file
 #will be for all files except for the support.py file. The support.py file will
-#have its own constants declared near the top of the file. 
+#have its own constants declared near the top of the file which will be used
+#in the main.py file.
 
 #Constants for all of the colors. 
 BLUE     = (   0,   0, 255)

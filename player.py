@@ -155,18 +155,18 @@ class Player(pygame.sprite.Sprite):
             self.change_y = -10
 
     #Changing the direction and speed of the player movement with the below methods.
-    def go_left(self):
+    def left(self):
         #The -8 represents the characters speed, in this case to the left. 
         self.change_x = -8
         #The L means that the player is moving to the left. 
         self.direction = "L"
 
-    def go_right(self):
+    def right(self):
         #The 8 represents the characters speed, in this case to the right. 
         self.change_x = 8
         #The R means that the player is moving to the right.
         self.direction = "R"
         
     #stopping the character
-    def stop(self):
+    def stop_moving(self):
         self.change_x = 0
