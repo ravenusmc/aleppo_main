@@ -22,8 +22,9 @@ class Level():
     def update(self):
         self.platform_list.update()
 
-    #This method will draw everything in the level
-    def draw(self, screen):
+    #This method will draw the background, platforms and determine
+    #the shift of the world framerate.
+    def create_Level(self, screen):
         
         #This will draw/change the background. 
         screen.fill(constants.BLUE)
@@ -32,8 +33,8 @@ class Level():
         #Draw the platforms to the game world
         self.platform_list.draw(screen)
 
-    #This method will shift the world when the user moves to the left or right.
-    def shift_world(self, shift_x):
+    #This method will move the world when the user moves to the left or right.
+    def move_World(self, shift_x):
         
         #This line keeps track of the shift amount
         self.world_shift += shift_x
@@ -277,6 +278,7 @@ class Level_01(Level):
         self.platform_list.add(block)
 
         #These platforms form a wall that the player must get through to progress
+        #Wall 1
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
         block.rect.x = 800
         block.rect.y = 550
@@ -328,6 +330,7 @@ class Level_01(Level):
         self.platform_list.add(block)
         
         #These platforms form a wall that the player must get through to progress
+        #Wall 2
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
         block.rect.x = 1200
         block.rect.y = 550
@@ -379,6 +382,7 @@ class Level_01(Level):
         self.platform_list.add(block)
 
         #These platforms form a wall that the player must get through to progress
+        #Wall 3
         block = platforms.MovingPlatform(platforms.STONE_PLATFORM_RIGHT)
         block.rect.x = 2000
         block.rect.y = 550

@@ -16,6 +16,7 @@ LIGHT_GREEN = ( 0,  200,   0)
 
 #Creating constants for the screen dimensions. Note that the SCREEN_HEIGHT
 #value is set to 600 and not 800 as it is in the main file. This will allow
-#the player to be about 200 pixels above the bottom of the screen. 
+#the player to be about 200 pixels above the bottom of the screen. I personally
+#did not like having the character be at the bottom of the screen. 
 SCREEN_WIDTH  = 1000
 SCREEN_HEIGHT = 600

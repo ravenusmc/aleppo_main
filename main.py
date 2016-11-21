@@ -158,14 +158,14 @@ def main():
         if player.rect.x >= 500:
             diff = player.rect.x - 500
             player.rect.x = 500
-            current_level.shift_world(-diff)
+            current_level.move_World(-diff)
 
         #This line is what will shift the screen to the right if the player
         #moves towards the left hand side.
         if player.rect.x <= 95:
             diff = 120 - player.rect.x
             player.rect.x = 120
-            current_level.shift_world(diff)
+            current_level.move_World(diff)
         
         #These lines of code are what will cause a game over if the player
         #wonders to far to the left or to the right.
@@ -176,7 +176,7 @@ def main():
         #Drawing objects to the game world should be made below this line.
 
         #Drawing the current level to the screen
-        current_level.draw(support.screen)
+        current_level.create_Level(support.screen)
         #Drawing the current sprite list to the screen.
         active_sprite_list.draw(support.screen)
         #This line is what will display the score in the top left hand corner of the screen.
