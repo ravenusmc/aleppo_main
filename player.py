@@ -18,8 +18,8 @@ class Player(pygame.sprite.Sprite):
     walking_frames_l = []
     walking_frames_r = []
 
-    #Setting the initial direction for which way the player will face, in this case to
-    #the right. 
+    #Setting the initial direction for which way the player will face, in this
+    #case to the right. 
     direction = "R"
 
     #Initialization the character
@@ -78,7 +78,7 @@ class Player(pygame.sprite.Sprite):
         
         #The calc_grav() function is what will be used to calculate gravity
         #During game play.
-        self.calc_grav()
+        self.gravity()
 
         #This code here is what will move the player left and right
         self.rect.x += self.change_x
@@ -126,7 +126,7 @@ class Player(pygame.sprite.Sprite):
                 self.rect.x += block.change_x
 
     #This method is what will calculate the effect of gravity.
-    def calc_grav(self):
+    def gravity(self):
         
         if self.change_y == 0:
             self.change_y = 1
@@ -135,7 +135,7 @@ class Player(pygame.sprite.Sprite):
             #A higher value makes your jumps smaller.
             self.change_y += .35
 
-        # See if we are on the ground.
+        #Checking to see if the player is on the ground
         if self.rect.y >= constants.SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
             self.change_y = 0
             self.rect.y = constants.SCREEN_HEIGHT - self.rect.height
@@ -150,7 +150,7 @@ class Player(pygame.sprite.Sprite):
         platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         self.rect.y -= 2
 
-        # If it is ok to jump, set our speed upwards
+        #Making the player's speed be upwards
         if len(platform_hit_list) > 0 or self.rect.bottom >= constants.SCREEN_HEIGHT:
             self.change_y = -10
 

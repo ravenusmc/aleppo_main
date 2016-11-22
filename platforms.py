@@ -46,10 +46,10 @@ class MovingPlatform(Platform):
     #An update method to update movement of the platforms
     def update(self):
         
-        # Move left/right
+        #Moving the platforms left/right
         self.rect.x += self.change_x
 
-        # See if we hit the player
+        #This line will see if the player collides with a platform
         hit = pygame.sprite.collide_rect(self, self.player)
         if hit:
             # If we are moving right, set our right side
