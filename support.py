@@ -271,6 +271,7 @@ def pause():
                           black,
                           150)
 
-        
+        #Updating the display 
         pygame.display.update()
+        #Setting the frames per second
         clock.tick(15)
